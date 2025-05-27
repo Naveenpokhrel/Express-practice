@@ -32,9 +32,9 @@ export const createProductController = (req: Request, res: Response) => {
   // const { name, price, description } = req.body;
   // const newProduct = createProductDetails({ name, price, description });
   // res.status(201).json(newProduct);
-  const { name, description, price, stock_quantity } = req.body;
+  const { product_name, description, price, stock_quantity } = req.body;
   SqlProductModel.createProductDetails({
-    name,
+    product_name,
     description,
     price,
     stock_quantity,
@@ -50,11 +50,11 @@ export const createProductController = (req: Request, res: Response) => {
 
 export const updateProductController = async (req: Request, res: Response) => {
   const id = parseInt(req.params.id);
-  const { name, description, price, stock_quantity } = req.body;
+  const { product_name, description, price, stock_quantity } = req.body;
 
   try {
     const updatedProduct = await SqlProductModel.UpdateProduct(id, {
-      name,
+      product_name,
       description,
       price,
       stock_quantity,
